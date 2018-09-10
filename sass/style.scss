@@ -4,7 +4,8 @@
   margin: 0 auto;
 }
 body {
-	font-family: 'Montserrat', sans-serif; 
+	font-family: 'Indie Flower', cursive;
+  /*font-family: 'Montserrat', sans-serif;*/ 
   background: #CBD6CE;
   .board {
     .header {
@@ -12,11 +13,15 @@ body {
 	    height: 80px;
       line-height: 80px;
       /*background: pink;*/
+      h1 {
+
+      }
     }
     .button-create-column {
       text-align: center;
 	    height: 50px;
 	    line-height: 50px;
+      margin: 30px;
       /*background: lightgreen;*/
       .create-column {
         width: 130px;
@@ -41,7 +46,9 @@ body {
         /*background: green;*/
         flex: 1;
         h2 {
-          
+          text-transform: uppercase;
+          font-size: 2.5em;
+          background: #696969;
         }
         ul {
           padding-left: 0;
@@ -54,21 +61,26 @@ body {
               width: 220px;
               height: 180px;
               margin: 30px 54px 30px;
-              background: #B375BF;
+              padding-top: 10px;
+              background: #0099CC;
               box-shadow: 5px 5px 2px #222;
-            
-               .btn-delete {
-                  position: absolute;
-                  right: 0;
-                  bottom: 0;
-                  /*margin-top: 92px;*/
-                  background: transparent;
-               }
+              .card-description{
+                font-weight: bold;
+                font-size: 1.5em;
+              }
+              .btn-delete {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                /*margin-top: 92px;*/
+                background: transparent;
+              }
             }
           }
         }
         button {
-	        height: 25px;
+	        /*display: none; /* wyłączone przyciski */
+          height: 25px;
 	        line-height: 25px;
           padding: 0 10px;
           text-transform: uppercase;
@@ -86,6 +98,9 @@ body {
   }
 }
 
+.blue {
+  background: blue;
+}
 /*[class*="col-"] {
 	float: left;
 	min-height: 1px;

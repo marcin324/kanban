@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   box-sizing: border-box;
   border: 1px solid black;
@@ -5,21 +6,26 @@
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Indie Flower', cursive;
+  /*font-family: 'Montserrat', sans-serif;*/
   background: #CBD6CE;
 }
+
 body .board .header {
   text-align: center;
   height: 80px;
   line-height: 80px;
   /*background: pink;*/
 }
+
 body .board .button-create-column {
   text-align: center;
   height: 50px;
   line-height: 50px;
+  margin: 30px;
   /*background: lightgreen;*/
 }
+
 body .board .button-create-column .create-column {
   width: 130px;
   height: 35px;
@@ -29,35 +35,56 @@ body .board .button-create-column .create-column {
   border: none;
   font-weight: bold;
 }
+
 body .board .button-create-column .create-column:hover {
   background: #759ABF;
   transition: 0.5s;
 }
+
 body .board .column-container {
+  display: -ms-flexbox;
   display: flex;
   min-width: 1200px;
 }
+
 body .board .column-container .column {
   text-align: center;
   /*display: inline-block;*/
   /*background: green;*/
-  flex: 1;
+  -ms-flex: 1;
+      flex: 1;
 }
+
+body .board .column-container .column h2 {
+  text-transform: uppercase;
+  font-size: 2.5em;
+  background: #696969;
+}
+
 body .board .column-container .column ul {
   padding-left: 0;
 }
+
 body .board .column-container .column ul li {
   list-style: none;
   /*display: inline-block;*/
 }
+
 body .board .column-container .column ul li .card {
   position: relative;
   width: 220px;
   height: 180px;
   margin: 30px 54px 30px;
-  background: #B375BF;
+  padding-top: 10px;
+  background: #0099CC;
   box-shadow: 5px 5px 2px #222;
 }
+
+body .board .column-container .column ul li .card .card-description {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
 body .board .column-container .column ul li .card .btn-delete {
   position: absolute;
   right: 0;
@@ -65,7 +92,9 @@ body .board .column-container .column ul li .card .btn-delete {
   /*margin-top: 92px;*/
   background: transparent;
 }
+
 body .board .column-container .column button {
+  /*display: none; /* wyłączone przyciski */
   height: 25px;
   line-height: 25px;
   padding: 0 10px;
@@ -75,9 +104,14 @@ body .board .column-container .column button {
   font-weight: bold;
   background: #5B8BBA;
 }
+
 body .board .column-container .column button:hover {
   background: #759ABF;
   transition: 0.5s;
+}
+
+.blue {
+  background: blue;
 }
 
 /*[class*="col-"] {
@@ -181,3 +215,4 @@ body .board .column-container .column button:hover {
 .col-offset-11 {
   margin-left: 91.66%;
 }
+/*# sourceMappingURL=style.css.map */

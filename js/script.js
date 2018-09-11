@@ -35,7 +35,39 @@ document.addEventListener('DOMContentLoaded', function() {
                 self.removeColumn();
             }
             if(event.target.classList.contains('add-card')){
-                self.addCard(new Card(prompt("Enter the name of the card")));
+                
+
+                /* Tworzenie modala */        
+                var modal = document.createElement('div');
+                modal.className = 'modal';
+                modal.innerHTML =`
+                Kategoria: <select id="modal-category">
+                <option>urgent</option>
+                <option>normal</option>
+                <option>later</option>
+                </select>
+                <br>
+                Opis: <textarea id="modal-desc"></textarea>
+                <br>
+                <button id="modal-add-button">Add</button>
+                <button id="modal-cancel-button">Cancel</button>
+                `;
+
+                document.body.appendChild(modal);
+
+                /* Nasłuchiwacz do buttona 'Cancel' */
+                document.querySelector('#modal-cancel-button').addEventListener('click', function(){
+                    modal.remove();
+                })
+
+                /* Nasłuchiwacz do buttona 'Add' */
+                document.querySelector('#modal-add-button').addEventListener('click', function(){
+                    var desc = document.querySelector('#modal-desc').value;
+                    var category = document.querySelector('#modal-category').value;
+                
+                    self.addCard(new Card(desc, category));
+                    modal.remove();
+                })
             }
         });
     }
@@ -51,11 +83,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   
     /* Klasa 'Card' */
-    function Card(description){
+    function Card(description, category){
         var self = this;
         this.id = randomString();
         this.description = description;
-        this.element = generateTemplate('card-template', {description: this.description}, 'li');
+        this.category = category;
+        this.element = generateTemplate('card-template', {description: this.description, category: this.category}, 'li');
         /* Przypięcie nasłuchiwacza do usuwania kart */
         this.element.querySelector('.card').addEventListener('click', function(event){
             event.stopPropagation();
@@ -111,36 +144,36 @@ document.addEventListener('DOMContentLoaded', function() {
     board.addColumn(doingColumn);
     board.addColumn(doneColumn);
   
-    var card1TodoColumn = new Card('important');
-    var card2TodoColumn = new Card('normal');
-    var card3TodoColumn = new Card('later');
+    var card1TodoColumn = new Card('Zacząć nowy moduł Bootcampa!', 'urgent');
+    var card2TodoColumn = new Card('Skończyć kurs programowania Kodilli', 'normal');
+    var card3TodoColumn = new Card('Podróż do Maroka', 'later');
 
     todoColumn.addCard(card1TodoColumn);
     todoColumn.addCard(card2TodoColumn);
     todoColumn.addCard(card3TodoColumn);
 
-    var card1WaitingColumn = new Card('tomorrow');
-    var card2WaitingColumn= new Card('next week');
-    var card3WaitingColumn = new Card('next month');
+    var card1WaitingColumn= new Card('Zapłacić rachunki', 'normal');
+    var card2WaitingColumn = new Card('Z psem do weterynarza!', 'later');
+    var card3WaitingColumn = new Card('Wyrzucić choinkę :)', 'later');
 
     waitingColumn.addCard(card1WaitingColumn);
     waitingColumn.addCard(card2WaitingColumn);
     waitingColumn.addCard(card3WaitingColumn);
 
-    var card1DoingColumn = new Card('just started');
-    var card2DoingColumn = new Card('in progress');
-    var card3DoingColumn = new Card('almost done');
+    var card1DoingColumn = new Card('Skończyć moduł 11, zaliczyć wszystkie zadania z modułu', 'urgent');
+    var card2DoingColumn = new Card('Naprawić rower', 'normal');
+    /*var card3DoingColumn = new Card('', 'later');*/
 
     doingColumn.addCard(card1DoingColumn);
     doingColumn.addCard(card2DoingColumn);
-    doingColumn.addCard(card3DoingColumn);
+    /*doingColumn.addCard(card3DoingColumn);*/
 
-    var card1DoneColumn = new Card('family');
-    var card2DoneColumn = new Card('job');
-    var card3DoneColumn = new Card('hobby');
+    /*var card1DoneColumn = new Card('', 'urgent');*/
+    var card2DoneColumn = new Card('Zrobić swój pierwszy Kanban', 'normal');
+    /*var card3DoneColumn = new Card('', 'later');*/
 
-    doneColumn.addCard(card1DoneColumn);
+    /*doneColumn.addCard(card1DoneColumn);*/
     doneColumn.addCard(card2DoneColumn);
-    doneColumn.addCard(card3DoneColumn);
+    /*doneColumn.addCard(card3DoneColumn);*/
 
 });

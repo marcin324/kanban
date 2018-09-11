@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en pl" >
 
 <head>
   <meta charset="utf-8">
   <title>Kanban board</title>
-  <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -18,19 +18,23 @@
       <button class="create-column">Add a column</button>
     </div>
     <div class="column-container"></div>
+    <div class="empty"></div>
 	</div>
   
  <script id="column-template" type="x-tmpl-mustache">
     <div class="column">
         <h2 class="column-title">{{ name }}</h2>
         <ul id={{ id }} class="column-card-list"></ul>
-        <button class="btn-delete">X</button>
-        <button class="add-card">Add a card</button>
+        <div class="btn-add-delete">
+        	<button class="add-card">Add a card</button>
+        	<button class="btn-delete" id="btn-delete-column">x</button>
+    	</div>
     </div>
 </script>
-  
+
 <script id="card-template" type="x-tmpl-mustache">
-  <div class="card">
+  <div class="card category-{{ category }}">
+    <h2>{{ category }}</h2>
     <p class="card-description">{{ description }}</p>
     <button class="btn-delete">x</button>
   </div>
